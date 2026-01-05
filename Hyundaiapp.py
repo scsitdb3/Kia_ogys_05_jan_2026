@@ -16,11 +16,11 @@ from user_event_log import log_app_events
 
 
 # ---------------- Page Config ---------------- #
-st.set_page_config(page_title="Hyundai Report Generator", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="KIA Report Generator", layout="wide", initial_sidebar_state="expanded")
 
-st.title("🚗 Hyundai Order Generator")
+st.title("🚗 KIA Order Generator")
 st.markdown("""
-📊 Generate comprehensive reports from Hyundai data files including:
+📊 Generate comprehensive reports from KIA data files including:
 - OEM Reports
 - Stock Reports
 - Receiving Pending list
@@ -226,7 +226,7 @@ def validate_periods(all_locations, start_date, end_date, period_days):
             except Exception as e:
                 validation_errors.append(f"{location}: Error validating Transfer list periods - {str(e)}")
 
-        # MRN not in Hyundai set; mark True
+        # MRN not in KIA set; mark True
         mrn_has_period = {p: True for p in periods}
 
         for period_start, period_end in periods:
@@ -379,7 +379,7 @@ def validate_cross_sums(all_locations):
 
 # ---------------- Optional: external checks kept lenient ---------------- #
 def validate_oem_mrn_po_codes(all_locations):
-    """Safe/lenient for Hyundai; returns empty dataframes if structure not found."""
+    """Safe/lenient for KIA; returns empty dataframes if structure not found."""
     try:
         df = pd.read_excel(
             r"https://docs.google.com/spreadsheets/d/e/2PACX-1vTeXEadE1Hf4G2T-o4XCvGYMyRKj6f2sVxsSDaPs_sJwmGbnCFoDzSJx9JHDaNzw5JKdk4l0Q0Yctmh/pub?output=xlsx"
@@ -464,7 +464,7 @@ def show_reports():
         st.download_button(
             "📦 Download All Reports as ZIP",
             data=zip_buffer.getvalue(),
-            file_name="Hyundai_Reports.zip",
+            file_name="KIA_Reports.zip",
             mime="application/zip"
         )
 
@@ -473,7 +473,7 @@ ui_main()
 if st.session_state.get("logged_in", False):
     with st.sidebar:
         st.header("⚙ Settings")
-        uploaded_file = st.file_uploader("Upload Hyundai ZIP file", type=['zip'])
+        uploaded_file = st.file_uploader("Upload KIA ZIP file", type=['zip'])
         if uploaded_file is not None:
             st.session_state.uploaded_file = uploaded_file
     
@@ -620,6 +620,7 @@ if st.session_state.get("logged_in", False):
             or st.session_state.period_validation_errors
         ):
             show_validation_issues()
+
 
 
 
