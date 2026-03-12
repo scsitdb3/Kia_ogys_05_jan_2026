@@ -203,7 +203,7 @@ def process_files(validation_errors, all_locations, start_date, end_date, total_
 
             # RECEIVING TODAY DETAIL (header=1)
             if fl.startswith("receiving today detail"):
-                cols = ['SEQ','CASE NO ','ORDER NO ','LINE NO','PART NO _SUPPLY','PART NO _ORDER','H/K','PART NAME',
+                cols = ['SEQ','CASE NO ','ORDER NO ','LINE NO','PART NO _SUPPLY','PART NO _ORDER','PART NAME',
                         'SUPPLY QTY','ORDER QTY','ACCEPT QTY','CLAIM QTY','CLAIM TYPE','CLAIM CODE','LOC','LIST PRICE',
                         'NDP (UNIT)','ED (UNIT)','MAT VALUE','DEPOT S/C','VOR S/C','OTHER CHARGES','Blank_column','STAX(%)','CTAX(%)',
                         'ITAX(%)','TAX(%)','HSN CODE','TAX AMT','FRT/INS','SGST AMT','CGST AMT','IGST AMT','COMP CESS AMT',
@@ -590,6 +590,7 @@ def process_files(validation_errors, all_locations, start_date, end_date, total_
     else:
         st.info("ℹ No reports available to download.")
         st.warning("Pls check Folder Structure")  # (fix typo from st.warring -> st.warning)
+
 
 
 
